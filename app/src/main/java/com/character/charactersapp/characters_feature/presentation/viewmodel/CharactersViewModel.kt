@@ -24,21 +24,20 @@ class CharactersViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _charactersState = MutableStateFlow(CharactersState())
-    private val _characterDetailState = MutableStateFlow(CharacterDetailState())
-
     val charactersState: Flow<CharactersState> = _charactersState.asStateFlow()
+
+    private val _characterDetailState = MutableStateFlow(CharacterDetailState())
     val characterDetailState: Flow<CharacterDetailState> = _characterDetailState.asStateFlow()
 
     init {
         getAllCharacters()
     }
 
-    private fun getAllCharacters() = charactersUseCase().onEach { resource ->
+    private fun getAllCharacters() = charactersUseCase.invoke().onEach { resource ->
         handleCharacterState(resource)
     }.launchIn(viewModelScope)
 
-    private fun searchCharacters(query: String) = searchCharactersUseCase(query)
-        .onEach { resource ->
+    private fun searchCharacters(query: String) = searchCharactersUseCase.invoke(query).onEach { resource ->
             handleCharacterState(resource)
         }.launchIn(viewModelScope)
 

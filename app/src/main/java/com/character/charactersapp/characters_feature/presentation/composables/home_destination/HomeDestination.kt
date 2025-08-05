@@ -11,6 +11,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.platform.testTag
 import com.character.charactersapp.characters_feature.domain.model.Character
 import com.character.charactersapp.characters_feature.presentation.composables.util.CharacterItem
@@ -56,4 +57,15 @@ fun HomeDestination(
             }
         }
     }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun HomeDestinationPreview() {
+    HomeDestination(
+        charactersState = CharactersState(characterData = listOf(Character())),
+        query = "",
+        onClickNavigate = {},
+        searchQuery = {}
+    )
 }

@@ -15,8 +15,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.Preview
 import com.character.charactersapp.characters_feature.presentation.ui.BACK
 import com.character.charactersapp.characters_feature.presentation.ui.MediumMargin
+import com.character.charactersapp.characters_feature.presentation.ui.theme.CharactersAppTheme
 
 @Composable
 fun BackButtonHeader(modifier: Modifier = Modifier, header: String, onBackButtonClick: () -> Unit) {
@@ -39,5 +41,16 @@ fun BackButtonHeader(modifier: Modifier = Modifier, header: String, onBackButton
                 modifier = modifier.align(Alignment.CenterVertically)
             )
         }
+    }
+}
+
+
+@Preview(showBackground = true, showSystemUi = false)
+@Composable
+fun BackButtonHeaderPreview() {
+    CharactersAppTheme {
+        BackButtonHeader(
+            header = "Character Details"
+        ) {}
     }
 }

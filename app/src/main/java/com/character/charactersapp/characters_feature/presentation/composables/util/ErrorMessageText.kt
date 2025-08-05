@@ -9,6 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import com.character.charactersapp.characters_feature.presentation.ui.TextSizeMedium
 
 @Composable
@@ -25,4 +26,10 @@ fun ErrorMessageText(modifier: Modifier = Modifier, errorMsg: String) {
             fontStyle = FontStyle.Normal
         )
     }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun ErrorMessageTextPreview() {
+    ErrorMessageText(errorMsg = "Something went wrong")
 }

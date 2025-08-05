@@ -21,7 +21,7 @@ fun DetailDestination(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier.fillMaxSize()
     ) {
-        BackButtonHeader(header = "") {
+        BackButtonHeader(header = "Character Details") {
             onBackButtonClick()
         }
         CharacterDetail(character = character)

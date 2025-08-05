@@ -38,6 +38,9 @@ class DefaultCharactersRepository @Inject constructor(
             }
             charactersDao.deleteCharacters()
             charactersDao.insertCharacters(remoteCharacters)
+
+            val updatedCharacters = charactersDao.getAllCharacters().map { it.toDomainCharacters() }
+            emit(Resource.Success(updatedCharacters))
         } catch (unKnownException: UnknownHostException) {
             emit(Resource.Failure("No internet connection. Please try again later."))
         } catch (httpException: HttpException) {
@@ -46,8 +49,6 @@ class DefaultCharactersRepository @Inject constructor(
             emit(Resource.Failure(GENERIC_ERROR))
             throw CharacterException(message = e.message, cause = e.cause)
         }
-        val updatedCharacters = charactersDao.getAllCharacters().map { it.toDomainCharacters() }
-        emit(Resource.Success(updatedCharacters))
     }.flowOn(coroutineDispatcher)
         .catch {
             emit(Resource.Failure(GENERIC_ERROR + it.message))

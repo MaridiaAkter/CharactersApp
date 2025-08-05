@@ -41,10 +41,12 @@ fun AppNavigation(
                 onClickNavigate = { character ->
                     charactersViewModel.onEvent(UiEvent.NavigateToDetailScreen(character))
                     navController.navigate(CharactersDestinations.DetailDestination.route)
-                }) {
-                query.value = it
-                charactersViewModel.onEvent(UiEvent.SearchCharactersQuery(it))
-            }
+                },
+                searchQuery = { searchQuery ->
+                    query.value = searchQuery
+                    charactersViewModel.onEvent(UiEvent.SearchCharactersQuery(searchQuery))
+                }
+            )
         }
 
         composable(CharactersDestinations.DetailDestination.route) {

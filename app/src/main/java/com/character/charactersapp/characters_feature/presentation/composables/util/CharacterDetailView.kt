@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import com.character.charactersapp.characters_feature.domain.model.Character
 import com.character.charactersapp.characters_feature.presentation.ui.ALIVE
 import com.character.charactersapp.characters_feature.presentation.ui.DEAD
@@ -75,4 +76,21 @@ fun CharacterDetail(modifier: Modifier = Modifier, character: Character) {
             SpacerView(houseColor = houseColor)
         }
     }
+}
+
+@Preview
+@Composable
+fun CharacterDetailPreview() {
+    CharacterDetail(
+        character = Character(
+            id = "1",
+            name = "Harry Potter",
+            species = "human",
+            house = "Gryffindor",
+            dateOfBirth = "31-07-1980",
+            actor = "Daniel Radcliffe",
+            alive = true,
+            image = "https://ik.imagekit.io/hpapi/harry.jpg"
+        )
+    )
 }
